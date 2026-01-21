@@ -133,6 +133,46 @@ wget https://www.ebi.ac.uk/metagenomics/api/v1/analyses/MGYA00575344/file/ERZ166
 wget https://www.ebi.ac.uk/metagenomics/api/v1/analyses/MGYA00575345/file/ERZ1664501_FASTA.fasta.gz
 ```
 
+## plantiSMASH test dataset (samplesheet_plantismash.csv): specific information
+
+This test dataset contains Arabidopsis thaliana genome data for testing the [plantiSMASH](https://plantismash.github.io) integration in nf-core/funcscan. plantiSMASH is designed for detecting specialized metabolite biosynthetic gene clusters in **plant genomes**.
+
+### Source
+
+The Arabidopsis thaliana data was downloaded from [NCBI Datasets](https://www.ncbi.nlm.nih.gov/datasets):
+
+- **Assembly**: GCA_000001735.2 (TAIR10.1)
+- **Files included**:
+  - `arabidopsis_thaliana.fasta` - Genome sequence (116MB)
+  - `arabidopsis_thaliana.faa` - Protein sequences extracted from annotations (24MB)
+  - `arabidopsis_thaliana.gbk` - GenBank annotation file (354MB) - **REQUIRED for plantiSMASH**
+
+### Usage
+
+The samplesheet (`samplesheet_plantismash.csv`) uses full URLs pointing to this repository and follows the four-column format:
+
+```csv
+sample,fasta,protein,gbk
+arabidopsis_thaliana,https://raw.githubusercontent.com/benjibromberg/test-datasets/funcscan/arabidopsis_thaliana.fasta,https://raw.githubusercontent.com/benjibromberg/test-datasets/funcscan/arabidopsis_thaliana.faa,https://raw.githubusercontent.com/benjibromberg/test-datasets/funcscan/arabidopsis_thaliana.gbk
+```
+
+### Integration with nf-core/funcscan
+
+This test data is used by:
+
+- Test profile: `test_plantismash` (in `conf/test_plantismash.config`)
+- nf-test file: `tests/test_plantismash.nf.test`
+
+To run the test:
+
+```bash
+nf-test test tests/test_plantismash.nf.test -profile test_plantismash,docker
+```
+
+### Note on file sizes
+
+The test data files are relatively large (especially the 354MB GenBank file). For faster testing, consider creating a subset (e.g., single chromosome) if needed.
+
 ## Broken Samplesheets
 
 We also hold 'broken' samplesheets for testing input schema validation.

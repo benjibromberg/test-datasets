@@ -1,0 +1,2 @@
+sample,fasta,protein,gbk
+arabidopsis_thaliana,https://raw.githubusercontent.com/benjibromberg/test-datasets/funcscan/arabidopsis_thaliana.fasta.gz,https://raw.githubusercontent.com/benjibromberg/test-datasets/funcscan/arabidopsis_thaliana.faa,https://raw.githubusercontent.com/benjibromberg/test-datasets/funcscan/arabidopsis_thaliana.gbk.gz
