@@ -143,9 +143,9 @@ The Arabidopsis thaliana data was downloaded from [NCBI Datasets](https://www.nc
 
 - **Assembly**: GCA_000001735.2 (TAIR10.1)
 - **Files included**:
-  - `arabidopsis_thaliana.fasta` - Genome sequence (116MB)
+  - `arabidopsis_thaliana.fasta.gz` - Genome sequence (compressed, 37MB; uncompressed 116MB)
   - `arabidopsis_thaliana.faa` - Protein sequences extracted from annotations (24MB)
-  - `arabidopsis_thaliana.gbk` - GenBank annotation file (354MB) - **REQUIRED for plantiSMASH**
+  - `arabidopsis_thaliana.gbk.gz` - GenBank annotation file (compressed, 77MB; uncompressed 354MB) - **REQUIRED for plantiSMASH**
 
 ### Usage
 
@@ -153,8 +153,10 @@ The samplesheet (`samplesheet_plantismash.csv`) uses full URLs pointing to this 
 
 ```csv
 sample,fasta,protein,gbk
-arabidopsis_thaliana,https://raw.githubusercontent.com/benjibromberg/test-datasets/funcscan/arabidopsis_thaliana.fasta,https://raw.githubusercontent.com/benjibromberg/test-datasets/funcscan/arabidopsis_thaliana.faa,https://raw.githubusercontent.com/benjibromberg/test-datasets/funcscan/arabidopsis_thaliana.gbk
+arabidopsis_thaliana,https://raw.githubusercontent.com/benjibromberg/test-datasets/funcscan/arabidopsis_thaliana.fasta.gz,https://raw.githubusercontent.com/benjibromberg/test-datasets/funcscan/arabidopsis_thaliana.faa,https://raw.githubusercontent.com/benjibromberg/test-datasets/funcscan/arabidopsis_thaliana.gbk.gz
 ```
+
+Note: The FASTA and GenBank files are gzipped to reduce file size for GitHub. Nextflow will automatically decompress them during pipeline execution.
 
 ### Integration with nf-core/funcscan
 
@@ -171,7 +173,7 @@ nf-test test tests/test_plantismash.nf.test -profile test_plantismash,docker
 
 ### Note on file sizes
 
-The test data files are relatively large (especially the 354MB GenBank file). For faster testing, consider creating a subset (e.g., single chromosome) if needed.
+The test data files are compressed (gzipped) to reduce size for GitHub. The uncompressed GenBank file is 354MB. For faster testing, consider creating a subset (e.g., single chromosome) if needed. Nextflow automatically handles gzipped input files.
 
 ## Broken Samplesheets
 
